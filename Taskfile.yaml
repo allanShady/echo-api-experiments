@@ -2,8 +2,8 @@
 
 version: "3"
 
-vars:
-  GREETING: Hello, World!
+env:
+  APP_NAME: echo-api
 
 tasks:
   build:
@@ -17,3 +17,19 @@ tasks:
   start-dev-server:
     cmds:
       - go run ./src/server.go
+
+  build-image:
+    cmds:
+      - docker build -t $APP_NAME -f docker/dockerfile .
+
+  start-container:
+    cmds:
+      - docker run -d -p 80:8080 --name  $APP_NAME $APP_NAME
+
+  stop-container:
+    cmds:
+      - docker stop  $APP_NAME
+
+  remove-container:
+    cmds:
+      - docker rm $APP_NAME

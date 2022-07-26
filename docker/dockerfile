@@ -1,0 +1,30 @@
+##
+## STEP 1 - BUILD
+##
+FROM golang:1.18-alpine3.15 AS builder
+
+# create a working directory inside the image
+WORKDIR /app
+
+# copy Go modules and dependencies to image
+COPY go.* /app/
+
+# download Go modules and dependencies
+RUN go mod download
+
+# copy src files
+COPY ./src ./src
+
+# compile application
+RUN go build ./src/server.go
+
+# Run stage
+FROM alpine:3.15
+
+WORKDIR /app
+
+COPY --from=builder /app/server .
+
+EXPOSE 8080
+
+ENTRYPOINT [ "/app/server" ]
