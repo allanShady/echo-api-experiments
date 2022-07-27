@@ -1,4 +1,4 @@
-## 💻 RESTFull *Echo** API experiments
+## 💻 RESTFull [**Echo**](https://echo.labstack.com/guide/) API experiments
 
 Simple go API suing [echo](https://echo.labstack.com/guide/) web framework written in golang
 
