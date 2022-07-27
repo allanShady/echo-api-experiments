@@ -22,7 +22,7 @@ tasks:
     cmds:
       - docker build -t $APP_NAME -f docker/dockerfile .
 
-  start-container:
+  deploy:
     cmds:
       - docker run -d -p 80:8080 --name  $APP_NAME $APP_NAME
 
@@ -33,3 +33,7 @@ tasks:
   remove-container:
     cmds:
       - docker rm $APP_NAME
+
+  test-app:
+    cmds:
+      - curl  -H 'app:getmsidn-info' http://localhost
