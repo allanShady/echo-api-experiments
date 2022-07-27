@@ -1,0 +1,13 @@
+# Run stage
+FROM alpine:3.15
+
+WORKDIR /app
+
+COPY ./server .
+
+#install the shared libraries that the Go binary needs
+RUN apk add --no-cache libc6-compat
+
+EXPOSE 8080
+
+ENTRYPOINT [ "/app/server" ]

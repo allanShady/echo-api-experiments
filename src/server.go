@@ -11,7 +11,7 @@ func main() {
 
 	e.GET("/", handler)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func handler(context echo.Context) error {

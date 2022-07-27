@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-echo-api-deployment
+  namespace: playground
+  labels:
+    app: simple-echo-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-echo-api
+  template:
+    metadata:
+      labels:
+        app: simple-echo-api
+    spec:
+      containers:
+        - name: simple-echo-api
+          image: alsacad/simple-echo-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
