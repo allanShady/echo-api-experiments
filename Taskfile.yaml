@@ -38,4 +38,4 @@ tasks:
     deps:
       - deploy
     cmds:
-      - curl  -H 'app:getmsidn-info' http://localhost
+      - curl  -H 'app:Hello world' http://localhost
