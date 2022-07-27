@@ -35,5 +35,7 @@ tasks:
       - docker rm $APP_NAME
 
   test-app:
+    deps:
+      - deploy
     cmds:
       - curl  -H 'app:getmsidn-info' http://localhost
